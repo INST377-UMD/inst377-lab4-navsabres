@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>INST377 - Lab 4</title>
+    <style>
+        /* Style for the page background */
+        body {
+            background-color: lightblue;
+            padding: 20px;
+        }
+
+        /* Style for the main title */
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        /* Style for all section boxes */
+        .section {
+            background-color: purple;
+            color: white;
+            padding: 20px;
+            margin: 10px 0;
+            border: 2px solid white;
+        }
+
+        /* Simple input and button styles */
+        input {
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main title -->
+    <h1 id="title">INST377 - Lab 4</h1>
+
+    <!-- Section 1: Alert Me -->
+    <div class="section">
+        <form onsubmit="return false;">
+            <label>Name: </label>
+            <input type="text" id="name" required>
+            <button onclick="showAlert()">Alert Me!</button>
+        </form>
+    </div>
+
+    <!-- Section 2: Change Color -->
+    <div class="section">
+        <button onclick="changeColor()">Change Color</button>
+    </div>
+
+    <!-- Section 3: Text Tester -->
+    <div class="section">
+        <form onsubmit="return false;">
+            <label>Text Tester: </label>
+            <input type="text" id="textTest">
+            <button onclick="validateText()">Validate Text</button>
+        </form>
+    </div>
+
+    <!-- Section 4: Add Text -->
+    <div class="section">
+        <button onclick="addText()">Add Text</button>
+    </div>
+
+    <!-- JavaScript functions -->
+    <script>
+        // Variable to track current color
+        var isBlue = true;
+
+        // Function to show alert with name
+        function showAlert() {
+            var name = document.getElementById('name').value;
+            alert('Hi ' + name + '!');
+        }
+
+        // Function to change background color
+        function changeColor() {
+            if (isBlue) {
+                document.body.style.backgroundColor = 'green';
+                isBlue = false;
+            } else {
+                document.body.style.backgroundColor = 'blue';
+                isBlue = true;
+            }
+        }
+
+        // Function to check for special characters
+        function validateText() {
+            var text = document.getElementById('textTest').value;
+            var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+            
+            if (validation.test(text)) {
+                alert('Text contains special characters!');
+            } else {
+                alert('Text is valid - no special characters found.');
+            }
+        }
+
+        // Function to add text to heading
+        function addText() {
+            var heading = document.getElementById('title');
+            heading.innerHTML = heading.innerHTML + ' GO BIRDS';
+        }
+    </script>
+</body>
+</html>
